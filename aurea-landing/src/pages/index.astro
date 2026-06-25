@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProblemAgitation from '../components/ProblemAgitation.astro';
+import copyData from '../data/copy.json';
+import Header from '../components/Header.astro';
+import Demo from '../components/Demo.astro';
+import Process from '../components/Process.astro';
+import Footer from '../components/Footer.astro';
+
+const data = copyData as any;
+const { hero, pas, solutionData, cases } = data;
+---
+<Layout title="Aurea Digital Studio | Caja Rápida">
+  <Header slogan={copyData.header.slogan} />
+  <main>
+    <Hero data={hero} />
+    <Demo />
+    <ProblemAgitation pasData={pas} solutionData={solutionData} />
+    <section class="max-w-5xl mx-auto px-4 py-24 border-t border-slate-900">
+      <Process data={copyData.process} />
+    </section>
+  </main>
+  <Footer />
+</Layout>

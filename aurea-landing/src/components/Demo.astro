@@ -1,0 +1,72 @@
+---
+// src/components/Demo.astro
+---
+
+<section class="w-full bg-[#151515] py-24 px-4 sm:px-6 border-t border-gold-dark/20 relative overflow-hidden">
+  
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    
+    <div class="z-10">
+      <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-content-main mb-6 leading-tight">
+        Así se ve tu <span class="text-gold">Guardia Digital</span> en acción.
+      </h2>
+      <p class="text-lg text-content-muted mb-8 leading-relaxed">
+        Imagina que vendes celulares. En lugar de recibir 50 mensajes diarios preguntando "¿Precio?", tu cliente entra a tu Caja Rápida. El sistema resuelve sus dudas al instante y solo le da acceso a tu WhatsApp cuando está listo para transferir.
+      </p>
+      
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-gold mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <span class="text-gray-300">Cero preguntones en tu bandeja de entrada.</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-gold mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <span class="text-gray-300">Filtro automático de curiosos.</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-gold mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <span class="text-gray-300">Cierres de venta 3x más rápidos.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="flex justify-center lg:justify-end relative">
+      
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold/20 blur-[80px] rounded-full pointer-events-none"></div>
+
+      <div class="relative mx-auto border-gray-900 bg-gray-900 border-[12px] rounded-[2.5rem] h-[550px] w-[280px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+        
+        <div class="w-[30%] h-[18px] bg-gray-900 absolute top-0 left-1/2 -translate-x-1/2 rounded-b-[1rem] z-20"></div>
+        
+        <div class="rounded-[1.8rem] overflow-hidden w-full h-full bg-white relative flex flex-col">
+          
+          <div class="w-full bg-black text-white text-center py-4 pt-8 text-xs font-bold tracking-widest uppercase">
+            MóvilTech Pro
+          </div>
+          
+          <div class="flex-1 p-5 flex flex-col items-center justify-center text-center bg-gray-50">
+            <div class="w-24 h-24 bg-gray-200 rounded-full mb-4 flex items-center justify-center border-4 border-white shadow-sm">
+              <span class="text-3xl">📱</span>
+            </div>
+            <h3 class="font-bold text-gray-900 leading-tight mb-2">iPhone 15 Pro Max</h3>
+            <p class="text-xs text-gray-500 mb-6">Titanio puro. Sellado y con garantía de 1 año. Envío gratis a todo el país.</p>
+            
+            <div class="w-full space-y-3">
+              <button class="w-full py-2.5 px-4 bg-white border border-gray-200 text-gray-700 text-xs font-semibold rounded-lg shadow-sm">
+                ¿Tienen envíos? (FAQ)
+              </button>
+              <button class="w-full py-2.5 px-4 bg-white border border-gray-200 text-gray-700 text-xs font-semibold rounded-lg shadow-sm">
+                Ver Catálogo de Precios
+              </button>
+              <button class="w-full py-3 px-4 bg-[#25D366] text-white text-xs font-bold rounded-lg shadow-md flex items-center justify-center gap-2 mt-2">
+                🟢 Lo quiero comprar ya
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

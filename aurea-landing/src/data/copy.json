@@ -1,0 +1,61 @@
+{
+  "header": {
+    "slogan": "Crecimiento de Alto Rendimiento"
+  },
+"hero": {
+    "title": "Deja de perder tiempo con curiosos. Recibe solo <span class=\"text-gold\">clientes listos para comprar.</span>",
+    "subtitle": "Instalamos tu 'Guardia Digital': el activo web automatizado que filtra las dudas comunes, elimina a los preguntones y envía a tu WhatsApp únicamente a quienes ya tienen la tarjeta en la mano.",
+    "ctaText": "Quiero instalar mi Guardia Digital",
+    "whatsappLink": "https://wa.me/573176216966?text=Hola%20Aurea%20Digital%20Studio.%20Vengo%20del%20video%20y%20estoy%20listo%20para%20instalar%20mi%20Guardia%20Digital%2024/7."
+  },
+  "pas": {
+    "problem": "Muchos negocios queman su presupuesto en Meta Ads porque envían tráfico a sitios web lentos o sin embudos de venta claros.",
+    "agitation": "Una página barata que no convierte es un gasto. ¿Cuánto estás perdiendo al mes por leads que abandonan tu página lenta?",
+    "question": "¿Listo para dejar de quemar presupuesto?",
+    "solution": "Nosotros no hacemos \"páginas web\", construimos activos digitales que generan ventas. Nuestra estrategia \"Caja Rápida\" desarrolla páginas de aterrizaje ultrarrápidas y optimizadas para conversión."
+  },
+  "solutionData": {
+    "solution": "Alineamos infraestructura técnica de ultra-alta velocidad con copy persuasivo diseñado para desplazar la conversación del costo hacia el Retorno de Inversión (ROI). Creamos tu vendedor digital 24/7.",
+    "features": [
+      {
+        "title": "Carga Instantánea (SSG)",
+        "description": "Infraestructura estática pura optimizada que elimina las tasas de rebote en Meta Ads causadas por la latencia técnica."
+      },
+      {
+        "title": "Fórmula Persuasiva PAS",
+        "description": "Estructuramos la landing para capturar los 3 segundos iniciales de atención, agitar el dolor del lead y cerrar con urgencia."
+      },
+      {
+        "title": "Fricción Cero a pp",
+        "description": "Enlaces pre-configurados que conectan directamente al prospecto con tu equipo de ventas sin formularios pesados."
+      }
+    ],
+    "ctaText": "Hablar con un Experto en Crecimiento",
+    "whatsappLink": "https://wa.me/573176246966?text=Hola.%20Vengo%20de%20la%20landing%20de%20Aurea%20y%20quiero%20hablar%20con%20un%20Experto%20en%20Crecimiento%20para%20optimizar%20mis%20campa%C3%B1as."
+  },
+"process": {
+    "sectionTitle": "Nuestro protocolo de trabajo",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Radiografía del Negocio",
+        "description": "Nos envías el enlace de tu negocio actual (Instagram, página web o idea). Nuestro equipo analiza tu embudo de ventas para encontrar las fugas de dinero."
+      },
+      {
+        "number": "02",
+        "title": "Arquitectura y Desarrollo",
+        "description": "No hacemos reuniones para perder el tiempo. Entramos al laboratorio y construimos un DEMO real de tu Guardia Digital adaptado a tu marca."
+      },
+      {
+        "number": "03",
+        "title": "Sesión Estratégica (El DEMO)",
+        "description": "Nos reunimos 30 minutos. Te mostramos exactamente cómo se ve tu sistema en vivo y cómo filtrará a tus clientes. Ves exactamente lo que vas a comprar."
+      },
+      {
+        "number": "04",
+        "title": "Despliegue y Facturación",
+        "description": "Si te vuela la cabeza, cerramos el trato. Desplegamos tu activo web en nuestros servidores de alto rendimiento y empiezas a recibir leads cualificados."
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+---
+// src/components/PAS.astro
+import CTAButton from './CTAButton.astro';
+
+interface FeatureItem { title: string; description: string; }
+interface Props {
+  pasData: { problem: string; agitation: string; question: string; solution: string; };
+  solutionData: { solution: string; features: Array<FeatureItem>; ctaText: string; whatsappLink: string; };
+}
+
+const { pasData, solutionData } = Astro.props;
+
+// Íconos premium para tus 3 características (Rayo/Velocidad, Diana/Persuasión, Enlace/Fricción Cero)
+const featureIcons = [
+  `<svg class="w-8 h-8 text-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+  `<svg class="w-8 h-8 text-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg>`,
+  `<svg class="w-8 h-8 text-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>`
+];
+---
+
+<section class="relative w-full bg-aurea-dark border-t border-white/5 overflow-hidden">
+  
+  <!-- Patrón de fondo (Laboratorio / Tech Grid) -->
+  <div class="absolute inset-0 z-0 opacity-[0.03]" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+  <!-- SECCIÓN 1: EL DOLOR (Zona Roja) -->
+  <div class="relative pt-24 pb-16 px-4 sm:px-6 z-10">
+    <!-- Orbe rojo de peligro -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-600/10 blur-[120px] rounded-[100%] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto">
+      <!-- Tarjeta de Agitación (Alerta del Sistema) -->
+      <div class="bg-black/60 backdrop-blur-md border border-red-500/20 rounded-3xl p-8 md:p-12 mb-16 shadow-[0_20px_50px_rgba(220,38,38,0.05)] relative transform transition-transform hover:-translate-y-1 duration-500">
+        <!-- Indicador de Alerta -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-500/10 border border-red-500/30 rounded-full flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Fuga Detectada</span>
+        </div>
+
+        <p class="text-2xl md:text-3xl text-white font-heading font-bold mb-6 leading-tight text-center">
+          {pasData.problem}
+        </p>
+        <div class="w-16 h-[1px] bg-red-500/30 mx-auto mb-6"></div>
+        <p class="text-lg md:text-xl text-red-300/80 italic text-center font-light leading-relaxed">
+          "{pasData.agitation}"
+        </p>
+      </div>
+
+      <!-- Transición: Pregunta y Solución -->
+      <div class="text-center mt-16 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight">
+          {pasData.question}
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          {pasData.solution}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2: LA SOLUCIÓN (Zona Dorada) -->
+  <div class="relative py-20 px-4 sm:px-6 border-t border-white/5 bg-gradient-to-b from-[#111111] to-[#0a0a0a] z-10">
+    <!-- Orbe dorado de solución -->
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gold/10 blur-[150px] rounded-[100%] pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <h3 class="text-4xl md:text-5xl font-heading font-black text-white mb-6">
+          Transformamos código en <span class="text-gold">crecimiento.</span>
+        </h3>
+        <p class="text-lg text-gray-400 leading-relaxed">
+          {solutionData.solution}
+        </p>
+      </div>
+
+      <!-- Cuadrícula de Características (Glassmorphism + Hover Oro) -->
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mb-20">
+        {solutionData.features.map((feature: FeatureItem, index: number) => (
+          <div class="bg-[#151515]/80 backdrop-blur-sm p-8 rounded-2xl border border-white/5 hover:border-gold/40 transition-all duration-300 group shadow-lg hover:shadow-[0_0_30px_rgba(255,215,0,0.1)] transform hover:-translate-y-2 flex flex-col items-center text-center">
+            
+            <div class="w-16 h-16 rounded-2xl bg-black/50 border border-white/10 group-hover:border-gold/30 flex items-center justify-center mb-6 transition-colors duration-300 relative">
+               <!-- Resplandor detrás del ícono -->
+               <div class="absolute inset-0 bg-gold/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+               <Fragment set:html={featureIcons[index]} />
+            </div>
+            
+            <h4 class="text-xl font-bold text-white mb-4 group-hover:text-gold-light transition-colors duration-300">
+              {feature.title}
+            </h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA Final (Integrado o usando tu componente) -->
+      <div class="text-center">
+        <!-- Puedes usar tu <CTAButton /> original, o usar este enlace HTML estilizado con el efecto verde de WhatsApp de la agencia -->
+        <a 
+          href={solutionData.whatsappLink} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-aurea-dark bg-[#25D366] hover:bg-white hover:text-aurea-dark rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(37,211,102,0.3)] w-[90%] sm:w-auto border border-transparent group"
+        >
+          <span class="mr-2 group-hover:scale-110 transition-transform">💬</span> 
+          {solutionData.ctaText}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

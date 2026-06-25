@@ -1,0 +1,60 @@
+---
+import CTAButton from './CTAButton.astro';
+
+// 1. Extraemos la definición de la característica a una interfaz tipada independiente
+interface FeatureItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  data: {
+    solution: string;
+    features: Array<FeatureItem>; // Aplicamos el tipo en la estructura de props
+    ctaText: string;
+    whatsappLink: string;
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="py-24 bg-gradient-to-b from-white to-gray-50 px-4 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full">
+        Nuestra Solución
+      </span>
+      <h2 class="text-3xl md:text-5xl font-black text-gray-900 mt-4 tracking-tight leading-tight">
+        No creamos páginas web de catálogo. Desarrollamos máquinas de adquisición.
+      </h2>
+      <p class="text-lg text-gray-600 mt-6 leading-relaxed">
+        {data.solution}
+      </p>
+    </div>
+
+    {/* Retícula de pilares comerciales (Tipado explícito introducido en el parámetro del .map) */}
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      {data.features.map((feature: FeatureItem) => (
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-lg mb-6">
+            ✓
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* CTA Final de Refuerzo Comercial */}
+    <div class="text-center">
+      <div class="inline-block bg-gray-900 text-white text-xs font-semibold px-4 py-2 rounded-full mb-6">
+        🔥 Validación rápida de mercado + Flujo de caja inmediato
+      </div>
+      <div class="flex justify-center">
+        <CTAButton link={data.whatsappLink} text={data.ctaText} />
+      </div>
+    </div>
+  </div>
+  <div class="absolute -right-40 -bottom-40 w-96 h-96 bg-indigo-100/40 rounded-full blur-3xl"></div>
+</section>

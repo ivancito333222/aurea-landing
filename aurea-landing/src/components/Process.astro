@@ -1,0 +1,87 @@
+---
+// src/components/Process.astro
+
+// 1. DECLARAMOS LAS INTERFACES (La corrección principal para TypeScript)
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface ProcessData {
+  sectionTitle: string;
+  steps: Step[];
+}
+
+interface Props {
+  data: ProcessData;
+}
+
+// 2. TIPAMOS LOS PROPS (Le decimos a Astro que respete la interfaz)
+const { data } = Astro.props as Props;
+
+// Arreglo de íconos SVG Premium para cada paso (Lupa, Código, Monitor, Rayo)
+const icons = [
+  `<svg class="w-8 h-8 text-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>`,
+  `<svg class="w-8 h-8 text-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`,
+  `<svg class="w-8 h-8 text-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+  `<svg class="w-8 h-8 text-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
+];
+---
+
+<section class="w-full bg-aurea-dark py-24 px-4 sm:px-6 relative overflow-hidden border-t border-white/5">
+  
+  <!-- Patrón de fondo (Tech Grid) -->
+  <div class="absolute inset-0 z-0 opacity-10" style="background-image: linear-gradient(to right, #FFD700 1px, transparent 1px), linear-gradient(to bottom, #FFD700 1px, transparent 1px); background-size: 50px 50px;"></div>
+  
+  <!-- Resplandor central -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gold/10 blur-[120px] rounded-[100%] pointer-events-none z-0"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    
+    <!-- Encabezado de la sección -->
+    <div class="text-center mb-16 md:mb-24">
+      <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-white tracking-tight">
+        {data.sectionTitle}
+      </h2>
+      <div class="w-24 h-1 bg-gold mx-auto mt-6 rounded-full shadow-[0_0_15px_rgba(255,215,0,0.5)]"></div>
+    </div>
+
+    <!-- Cuadrícula de los 4 pasos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
+      
+      <!-- Línea conectora horizontal (Solo visible en PC) -->
+      <div class="hidden lg:block absolute top-[4rem] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-gold/40 to-transparent z-0"></div>
+
+      <!-- 3. TIPAMOS LAS VARIABLES DEL MAP (step: Step, index: number) -->
+      {data.steps.map((step: Step, index: number) => (
+        <div class="relative z-10 bg-gradient-to-b from-[#1e1e1e] to-[#121212] rounded-2xl p-8 border border-white/10 hover:border-gold/50 transition-all duration-300 group shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(255,215,0,0.15)] flex flex-col h-full transform hover:-translate-y-2 overflow-hidden">
+          
+          <!-- Línea de luz superior -->
+          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          <!-- Cabecera de la tarjeta: Número e Ícono -->
+          <div class="flex items-center justify-between mb-8">
+            <span class="text-5xl font-heading font-black text-white/5 group-hover:text-gold/10 transition-colors duration-300 pointer-events-none absolute right-4 top-4">
+              {step.number}
+            </span>
+            
+            <div class="w-16 h-16 rounded-2xl bg-black/50 border border-white/10 group-hover:border-gold/30 flex items-center justify-center shadow-inner relative z-10">
+              <Fragment set:html={icons[index]} />
+            </div>
+          </div>
+          
+          <!-- Textos -->
+          <h3 class="text-xl font-bold text-white mb-4 group-hover:text-gold-light transition-colors duration-300 relative z-10">
+            {step.number}. {step.title}
+          </h3>
+          <p class="text-gray-400 text-sm leading-relaxed flex-grow relative z-10">
+            {step.description}
+          </p>
+          
+        </div>
+      ))}
+      
+    </div>
+  </div>
+</section>
