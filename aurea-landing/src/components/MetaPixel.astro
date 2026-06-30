@@ -1,13 +1,19 @@
 ---
+// src/components/MetaPixel.astro
 import copy from '../data/copy.json';
+
 const isEnabled = copy.settings.features.metaAdsTracking;
 const pixelId = copy.settings.metaPixelId;
+const testCode = copy.settings.metaTestEventCode;
 ---
+
 {isEnabled && pixelId && (
   <>
+    <!-- Pre-conexiones a nivel de DNS para mitigar latencia de carga en Meta -->
     <link rel="preconnect" href="https://www.facebook.com" crossorigin />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
-    <script is:inline define:vars={{ pixelId }}>
+
+    <script is:inline define:vars={{ pixelId, testCode }}>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -16,11 +22,26 @@ const pixelId = copy.settings.metaPixelId;
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
+      
+      // Inicialización base del Píxel
       fbq('init', pixelId);
-      fbq('track', 'PageView');
+
+      // OPTIMIZACIÓN DE RENDIMIENTO / CRECIMIENTO:
+      // Si estamos testeando, inyectamos el código de prueba antes del PageView
+      if (testCode) {
+        fbq('trackSingle', pixelId, 'PageView', {}, { eventID: 'pageview_' + Date.now(), test_event_code: testCode });
+      } else {
+        fbq('track', 'PageView');
+      }
     </script>
     <noscript>
-      <img height="1" width="1" style="display:none" src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`} />
+      <img 
+        height="1" 
+        width="1" 
+        style="display:none" 
+        src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1${testCode ? `&test_event_code=${testCode}` : ''}`} 
+        alt="meta_pixel_fallback"
+      />
     </noscript>
   </>
 )}
