@@ -2,6 +2,14 @@
   "header": {
     "slogan": "Crecimiento de Alto Rendimiento"
   },
+  "settings": {
+    "features": {
+      "metaAdsTracking": true,
+      "tiktokAdsTracking": true
+    },
+    "metaPixelId": "1355474563181857",
+    "tiktokPixelId": "D8V9V3JC77U6CH9FIJCG"
+  },
 "hero": {
     "title": "Deja de perder tiempo con curiosos. Recibe solo <span class=\"text-gold\">clientes listos para comprar.</span>",
     "subtitle": "Instalamos tu 'Guardia Digital': el activo web automatizado que filtra las dudas comunes, elimina a los preguntones y envía a tu WhatsApp únicamente a quienes ya tienen la tarjeta en la mano.",
